@@ -122,6 +122,3 @@ compress_html:
   profile: false
   # ignore:
   #   envs: all
-
-# Color scheme supports "light" (default) and "dark"
-color_scheme: dark
