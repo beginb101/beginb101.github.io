@@ -3,7 +3,7 @@
 
 # Uncomment and set the URL of your site (with protocol, e.g. `https://`)
 # NOTE: You don't need to provide this property when hosting on GitHub Pages or Netlify.
-url: https://alpha-src.github.io
+url: https://beginb101.github.io
 
 # Uncomment and set the "base URL" of your site.
 # When your site is in a subdirectory, set to `/<name of directory>`,
@@ -19,7 +19,7 @@ url: https://alpha-src.github.io
 lang: ko-KR, en-US
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title: 𝓳𝓾𝔁𝓰𝓼𝓲𝓻𝓸𝓸
+title: 𝓑𝓮𝓰𝓲𝓷 𝓓𝓮𝓿𝓵𝓸𝓰
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -27,7 +27,7 @@ description: >
   Welcome to My Github Blog
 
 # A shorter description for the sidebar.
-tagline: 𝒢𝓇𝒾𝓃𝒹 𝒽𝒶𝓇𝒹, 𝒮𝒽𝒾𝓃𝑒 𝒽𝒶𝓇𝒹
+tagline: 𝒜 𝒸ℴ𝒹ℯ𝓈 𝒹ℴℯ𝓈𝓃'𝓉 𝓉𝓇𝓎 𝓉ℴ ℊ𝒾𝓋ℯ 𝒶𝒹𝓋𝒾𝒸ℯ ℴ𝓇 𝒿𝓊𝒹ℊℯ 𝓎ℴ𝓊.
 
 # A list of keywords for your blog
 keywords:
@@ -37,7 +37,6 @@ keywords:
     computerscience,
     개발자,
     개발,
-    컴공과,
     프론트엔드,
     백엔드,
   ]
@@ -45,7 +44,7 @@ keywords:
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
 # It also used by the `jekyll-seo-tag` plugin.
-logo: /assets/img/blog/logo-white.png
+logo: /assets/img/blog/matrixlogo.png
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
