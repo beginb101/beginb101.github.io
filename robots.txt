@@ -1,4 +1,4 @@
  User-agent: *
  Allow: /
  
- Sitemap: https://alpha-src.github.io/sitemap.xml
+ Sitemap: https://beginb101.github.io/sitemap.xml
