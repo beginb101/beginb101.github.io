@@ -7,14 +7,9 @@ author1:
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
-  about: |
-    𝓦𝓱𝓪𝓽 𝔂𝓸𝓾 𝔀𝓪𝓲𝓽𝓲𝓷𝓰 𝓯𝓸𝓻?
+  about: 
 
-    -🏫 한성대학교 컴퓨터 공학부 재학 중
-                      
-    -🔥 프론트엔드와 백엔드를 둘 다 잘하고 싶은 예비 풀스택 개발자
-
-    -📖 현재 C++과 플러터를 중점적으로 공부 중!
+    -🔥 풀스택 개발자가 목표
 
   # This photo will be used in the about section
   picture:
@@ -31,9 +26,9 @@ author1:
   # Comment/uncommet to show/hide
   # Rearrange to change the order in which they appear
   social:
-    instagram: juxgsiroo
-    github: alpha-src
-    email: fordevelop@pm.me
+    instagram: 
+    github: beginb101
+    email: dkfltm0907@gmail.com
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
     # google:          <number>
