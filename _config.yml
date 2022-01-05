@@ -49,8 +49,8 @@ logo: /assets/img/blog/matrixlogo.png
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
   # Used by `jekyll-feed`:
-  name: Sihyun Jung
-  email: fordevelop@pm.me
+  name: Inbume baek
+  email: dkfltm0907@gmail.com
   # # Used by `jekyll-seo-tag`:
   # twitter:             <username>
 
@@ -60,6 +60,8 @@ menu:
     url: /devlife/
   - title: Algorithm
     url: /algorithm/
+  - title: Daily Dev
+    url: /dailydev/
   - title: About
     url: /about/
 
@@ -74,7 +76,7 @@ legal:
     url: /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright: © 2021. All rights reserved.
+copyright: © 2022. All rights reserved.
 
 # Format of the permalinks
 permalink: /:categories/:year-:month-:day-:title/
