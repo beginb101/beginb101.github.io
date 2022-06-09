@@ -198,11 +198,7 @@ kramdown:
 
 # Setting a disqus shortname will enable the comment section on
 # pages with `comments: true` in the front matter.
-<<<<<<< HEAD
 disqus: beginb101
-=======
-disqus: <beginb101-github-io>
->>>>>>> 57d88f5be6c59f00911bc59b6f592e3837d1a7f9
 
 # Setting a tinyletter username will enable the newsletter subscription box.
 # PRO version only!
