@@ -1,8 +1,5 @@
 # Welcome to alpha-src's Github Page
 
-![alpha-src][logo-white]
-![alpha-src][logo-black]
-
 ***Apply Neat, Clean Theme to my github page***
 
 * *Theme* : `Hydejack Jekyll Theme`
