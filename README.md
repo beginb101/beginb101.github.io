@@ -1,4 +1,4 @@
-# Welcome to alpha-src's Github Page
+# Welcome to beginb101 Github Page
 
 ***Apply Neat, Clean Theme to my github page***
 
