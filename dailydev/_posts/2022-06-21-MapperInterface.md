@@ -93,6 +93,6 @@ public interface exMapper{
 위처럼 @Mapper를 사용하면 작성한 인터페이스의 메소드 이름과 Mapper.xml에 작성한 Sql id는 일치하고
 xml의 namespace는 인터페이스의 경로를 작성하기만 하면 사용 할 수 있다.
 
-![Full-width image](/assets/img/blog/MyBatis.PNG)
+![Full-width image](/assets/img/blog/MyBatis.png)
 Mapper Interface는 Mapperxml 파일과 DTO, VO 를 통해 데이터베이스와 서비스 계층에 접근할 수 있다.
 {:.figure}
