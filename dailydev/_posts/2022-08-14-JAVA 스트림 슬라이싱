@@ -1,0 +1,83 @@
+---
+layout: post
+title: JAVA 스트림 필터링
+description: >
+  2022-08-13-JAVA 스트림 필터링
+hide_description: false
+category: dailydev
+---
+
+- Table of Contents
+{:toc}
+
+## 스트림 슬라이싱
+스트림 슬라이싱으로 스트림의 요소를 선택하거나 스킵할 수 있다.
+스트림의 처음 몇 개의 요소를 무시하거나 특정크기로 스트림을 줄이는 방법 등 다양한 방법으로 스트림을 효율적으로 사용할 수 있다.
+
+## 프레디케이트를 이용한 슬라이싱
+자바 9은 스트림의 요소를 효과적으로 선택할 수 있도록 takeWhile, dropWhile 두 가지 새로운 메서드를 지원한다.
+
+__TAKEWHILE 활용__ <br>
+```java
+List<Dish> specialMenu = Arrays.asList(
+    new Dish("seasonal fruit", true, 120, Dish.Type.OTHER),
+    new Dish("prawns", false, 300, Dish.Type.FISH),
+    new Dish("rice", true, 350, Dish.Type.OTHER),
+    new Dish("chicken", false, 400, Dish.Type.MEAT),
+    new Dish("french fries", true, 530, Dish.Type.OTHER)
+);
+```
+
+다음과 같은 특별한 요리 목록이 있을때 320칼로리 이하의 요리를 선택한다고 하면 filter를 이용할 것이다. 하지만 위 리스트는 이미 칼로리 순으로 정렬되어 있기때문에 전체 스트림을 반복하면서 프레디케이트를 적용할 필요가 없이 takeWhil연산을 이용하면 320칼로리보다 크거나 같은 요리가 나오면 반복작업이 중단된다.
+
+```java
+List<Dish> sliceMenu1
+    = specialMenu.stream()                 
+                 .takeWhile(dish -> dish.getCalories() < 320)
+                 .collect(toList();)//seasonal fruit, prawns 목록
+```
+<br>
+
+__DROPWHILE 활용__<br>
+나머지 요소를 선택하려면 즉 320칼로리보다 큰 요소는 dropWhile을 이용하면 이 작업을 완료할 수 있다.
+
+```java
+List<Dish> sliceMenu2
+    = specialMenu.stream()                 
+                 .dropWhile(dish -> dish.getCalories() < 320)
+                 .collect(toList();)//rice, chicken, french fries 목록
+```
+
+dropWhile은 takeWhile의 정반대이다. dropWhile은 프레디케이트가 처음으로 거짓이 되는 지점까지 발견된 요소를 버린다. 즉 거짓이 되면 그 지점에서 작업을 중단하고 남은 모든 요소를 반환한다.
+
+
+## 스트림 축소
+limit(n)은 주어진 값 이하의 크기를 갖느 새로운 스트림을 반환하는 메서드이다.
+스트림이 정렬되어 있으면 최대 요소 n개를 반환할 수 있다.
+
+```java
+List<Dish> sliceMenu2
+    = specialMenu.stream()                 
+                 .filter(dish -> dish.getCalories() > 300)
+                 .limit(3)
+                 .collect(toList();)//rice, chicken, french fries 목록
+```
+위 코드는 프레디케이트와 일치하는 처음 세 요소를 선택한 다음에 즉시 결과를 반환한다.
+정렬되지 않은 스트림에도 limit를 사용할 수 있다. 단 소스가 정렬되어 있지 않았다면 limit의 결과도 정렬되지 않은 상태로 반환된다.
+
+## 요소 건너뛰기
+skip(n)은 처음 n개 요소를 제외한 스트림을 반환하는 메서드이다.
+n개 이하의 요소를 포함하는 스트림에 skip(n) 호출시 빈 스트림이 반환된다.
+
+```java
+List<Dish> sliceMenu2 = menu.stream()                 
+                            .filter(dish -> dish.getCalories() > 300)
+                            .skip(2)
+                            .collect(toList();)
+```
+
+위 코드는 300칼로리 이상의 처음 두 요리를 건너뛴 다음에 300칼로리가 넘는 나머지 요리를 반환한다.
+
+## 참고 문헌
+
+[모던 자바 인 액션](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=200069290)
