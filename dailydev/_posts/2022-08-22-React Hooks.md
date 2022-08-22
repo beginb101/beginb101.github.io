@@ -561,6 +561,114 @@ export default Average;
 등록 버튼을 눌렀을 때 포커스가 input으로 넘어가는걸 확인할 수 있다..
 useRef를 사용하여 ref를 설정하면 useRef를 통해 만든 객체 안의 current 값이 실제 엘리먼트를 가리킨다.
 
+## 로컬 변수 사용하기
+컴포넌트 로컬 변수를 사용해야 할 때도 useRef를 활용할 수 있다. 로컬 변수는 렌더링과 상관없이 바뀔 수 있는 값이다.
+
+```javascript
+import React, { useRef } from 'react';
+ 
+const RefSample = () => {
+  const id = useRef(1);
+  const setId = (n) => {
+    id.current = n;
+  }
+  const printId = () => {
+    console.log(id.current);
+  }
+  return (
+    <div>
+      refsample
+    </div>
+  );
+};
+ 
+export default RefSample;
+
+```
+이렇게 ref안의 값이 바뀌어도 렌더링되지 않기 때문에 주의해야 한다. 렌더링과 관련되지 않은 값을 관리할 때만 이러한 방식을 사용한다.
+
+## 커스텀 Hooks 만들기
+여러 컴포넌트에서 비슷한 기능을 공유할 경우 이를 각자의 Hook으로 작성하여 로직을 사용할 수 있다.
+
+```javascript
+//useInputs.js
+import { useReducer } from 'react';
+ 
+function reducer(state, action) {
+  return {
+    ...state,
+    [action.name]: action.value
+  };
+}
+ 
+export default function useInputs(initialForm) {
+  const [state, dispatch] = useReducer(reducer, initialForm);
+  const onChange = e => {
+    dispatch(e.target);
+  };
+  return [state, onChange];
+}
+```
+
+```javascript
+//Info.js
+import React from 'react';
+import useInputs from './useInputs';
+ 
+const Info = () => {
+  const [state, onChange] = useInputs({
+    name: '',
+    nickname: ''
+  });
+  const { name, nickname } = state;
+ 
+  return (
+    <div>
+      <div>
+        <input name="name" value={name} onChange={onChange} />
+        <input name="nickname" value={nickname} onChange={onChange} />
+      </div>
+      <div>
+        <div>
+          <b>이름:</b> {name}
+        </div>
+        <div>
+          <b>닉네임: </b>
+          {nickname}
+        </div>
+      </div>
+    </div>
+  );
+};
+ 
+export default Info;
+```
+
+이렇게 따로 Hooks을 만들어 사용할 수 있따.
+
+## 다른 Hooks
+다른 개발자가 만든 커스텀 Hooks도 라이브러리로 설치하여 사용할 수 있다.
+다른 개발자가 만든 다양한 Hooks 리스트는 다음 링크에서 확인할 수 있다.
+
+- [https://nikgraf.github.io/react-hooks/](https://nikgraf.github.io/react-hooks/)
+
+- [https://github.com/rehooks/awesome-react-hooks](https://github.com/rehooks/awesome-react-hooks)
+
+## 정리 
+- 리액트에서 Hooks 패턴을 사용하면 클래스형 컴포넌트를 작성하지 않고도 대부분의 기능을 구현할 수 있다. 
+
+- 리액트 매뉴얼에서는 새로 작성하는 컴포넌트의 경우 함수형 컴포넌트와 Hooks를 사용할 것을 권장하고 있다. 
+
+- 기존의 클래스형 컴포넌트는 앞으로도 계속해서 지원될 예정이기 때문에 유지 보수하고 있는 프로젝트에서 클래스형 컴포넌트를 사용하고 있다면, 이를 굳이 함수형 컴포넌트와 Hooks를 사용하는 형태로 전환할 필요는 없다. 
+
+-useEffect는 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태로 보아도 무방하다.
+
+- useReducer는 useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용하는 Hook, 함수에서 새로운 상태를 만들 때는 반드시 불변성을 지켜 주어야 한다.
+
+- useMemo는 함수형 컴포넌트 내부에서 발생하는 연산을 최적화할 수 있다. 
+
+- 숫자, 문자열, 객체처럼 일반 값을 재사용하려면 useMemo를 사용하고, 함수를 재사용하려면 useCallback을 사용하면 된다.
+
 ## 참고 문헌
 
 [리액트를 다루는 기술](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&linkClass=&barcode=9791160508796)
