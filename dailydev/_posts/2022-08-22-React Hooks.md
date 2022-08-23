@@ -661,7 +661,7 @@ export default Info;
 
 - 기존의 클래스형 컴포넌트는 앞으로도 계속해서 지원될 예정이기 때문에 유지 보수하고 있는 프로젝트에서 클래스형 컴포넌트를 사용하고 있다면, 이를 굳이 함수형 컴포넌트와 Hooks를 사용하는 형태로 전환할 필요는 없다. 
 
--useEffect는 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태로 보아도 무방하다.
+- useEffect는 클래스형 컴포넌트의 componentDidMount와 componentDidUpdate를 합친 형태로 보아도 무방하다.
 
 - useReducer는 useState보다 더 다양한 컴포넌트 상황에 따라 다양한 상태를 다른 값으로 업데이트해 주고 싶을 때 사용하는 Hook, 함수에서 새로운 상태를 만들 때는 반드시 불변성을 지켜 주어야 한다.
 
