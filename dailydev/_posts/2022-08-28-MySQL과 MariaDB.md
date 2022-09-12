@@ -90,6 +90,54 @@ SELECT TO_CHAR(SYSDATE, 'YYYYMMDD HH24MISS') AS date
 FROM dual;
 ```
 
+__자동 증갓값__<br>
+MariaDB와 오라클에서는 각각 시퀀스라는 오브젝트가 있다. 먼저 시퀀스 오브젝트를 생성한 뒤, 해당 시퀀스명으로 함수를 호출하여 신규 숫자를 채번할 수 있다. MySQL에서는 두 가지 방법으로 자동 증갓값을 저장한다.
+첫 번째는 특정 열의 속성으로 자동 증가하는 값을 설정하는 auto_increment를 명시하는 방법, 즉 테이블마다 특정한 하나의 열에만 해당 속성을 정의하여 자동 증가하는 숫자를 저장할 수 있다. 두 번째는 오라클과 마찬가지로 시퀀스 오브젝트를 생성한 뒤 호출하여 활용하는 방법이다.<br>
+
+MySQL, MariaDB auto_increment
+```sql
+CREATE TABLE TAB
+(SEQ INT NOT NULL AUTO_INCREMENT,
+ TITLE VARCHAR(20) NOT NULL);
+```
+MySQL, MariaDB 시퀀스
+```sql
+CREATE SEQUENCE [시퀀스명]
+INCREMENT BY [증감숫자]
+START WITH [시작숫자]
+NOMINVALUE OR MINVALUE [최솟값]
+NOMAXVALUE OR MAXVALUE [최댓값]
+CYCLE OR NOCYCLE
+CACHE OR NOCACHE
+```
+다음 값 채번: SELECT NEXTVAL(시퀀스명);<br>
+
+오라클
+```sql
+CREATE SEQUENCE [시퀀스명]
+INCREMENT BY [증감숫자]
+START WITH [시작숫자]
+NOMINVALUE OR MINVALUE [최솟값]
+NOMAXVALUE OR MAXVALUE [최댓값]
+CYCLE OR NOCYCLE
+CACHE OR NOCACHE
+```
+다음 값 채번: SELECT 시퀀스명.NEXTVAL FROM DUAL;<br>
+
+__문자 추출__<br>
+특정 구간 및 특정 위치의 문자열을 추출할 때 MySQL에서는 SUBSTRING() 오라클에서는 SUBSTR() 함수를 사용<br>
+MySQL, MariaDB<br> 
+SUBSTRING(열값 또는 문자열, 시작위치, 추출하려는 문자 갯수)
+```sql
+SELECT SUBSTRING('ABCDE', 2,3);
+```
+오라클 SUBSTR(열값 또는 문자열, 시작위치, 추출하려는 문자 갯수)
+```sql
+SELECT SUBSTR('ABCDE',2,3) FROM DUAL;
+```
+
+## MySQL과 MariaDB 튜닝의 중요성
+최근 MySQL과 MariaDB에 기반을 둔 안정적인 운영서비스를 제공하는 사례를 흔히 접할 수 있다. 지속적인 DBMS 엔진 가동을 위한 소프트웨어 안전성 등이 상용 DBMS와 크게 다르지 않다. 그러나 MySQL 과 MariaDB 에는 기능적인 제약사항이 있기 때문에 DBMS가 제공하느 기능을 더 자세히 알아야하며 제공되는 실행 계획정보를 해석하고 문제점을 인지하거나 대응할 수 있는 능력을 갖춘 뒤 쿼리 튜닝을 진행해야 한다. 요약하면 MySQL과 MariaDB는 기본적으로 무료이고 경량화된 소프트웨어이므로 활용하기 편리하고 유용한 반면 수행 가능한 알고리즘이 적어서 성능적으로 불리하다. 대신 다양한 스토리지 엔진을 적극적으로 사용할 수 있다.
 
 ## 참고 문헌
 
