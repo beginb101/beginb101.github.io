@@ -654,6 +654,32 @@ export default Info;
 
 - [https://github.com/rehooks/awesome-react-hooks](https://github.com/rehooks/awesome-react-hooks)
 
+## 커스텀훅
+useUpdateEffect 커스텀 훅으로 구현하기
+
+컴포넌트가 mount될 때에는 실행되지 않고,
+그 이후에 state가 변경될 때만 실행되게 하는 커스텀훅
+
+초기 렌더링(mount)인지 여부를 확인하기 위한 useRef와,
+초기 렌더링인지를 검사하는 if문을 가진 useEffect만 있으면 된다.
+```javascript
+const useUpdateEffect = (effect, dependencies) => {
+  const isFirstMount = useRef(true);
+  
+  useEffect(() => {
+    if (!isFirstMount.current) effect();
+    else isFirstMount.current = false;
+  }, dependencies);
+};
+```
+근데, 왜 첫 mount인지를 기억하는 데에 useState가 아닌 useRef를 사용하는 이유는
+useRef는 여러 번의 렌더링 속에서도 계속해서 값을 기억하고 있으면서도
+re-rendering을 발생시키지 않기 때문이다.
+useState는 값을 기억하긴 하지만 값이 변경되면 re-rendering을 유발하기 때문에
+우리가 원하는 동작에는 적합하지 않다.
+
+[react-hook-form](https://react-hook-form.com/kr/advanced-usage/)
+
 ## 정리 
 - 리액트에서 Hooks 패턴을 사용하면 클래스형 컴포넌트를 작성하지 않고도 대부분의 기능을 구현할 수 있다. 
 

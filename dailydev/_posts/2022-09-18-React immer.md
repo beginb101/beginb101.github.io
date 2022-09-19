@@ -1,8 +1,8 @@
 ---
 layout: post
-title: React 일정관리
+title: React immer 
 description: >
-  2022-09-04-React 일정관리 웹 애플리케이션 만들기
+  2022-09-19-React immer 라이브러리
 hide_description: false
 category: dailydev
 ---
