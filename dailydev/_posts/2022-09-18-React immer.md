@@ -2,7 +2,7 @@
 layout: post
 title: React immer 
 description: >
-  2022-09-19-React immer 라이브러리
+  2022-09-18-React immer 라이브러리
 hide_description: false
 category: dailydev
 ---
