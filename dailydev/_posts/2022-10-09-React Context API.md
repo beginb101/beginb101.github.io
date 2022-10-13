@@ -97,7 +97,7 @@ import ColorBox from "./contexts/ColorBox";
 import ColorContext from "./contexts/color";
 const App = () => {
   return(
-    <ColorContext.Provider value={{color:'red'}}>
+    <ColorContext.Provider value={ {color:'red'} }>
       <div>
         <ColorBox/>
       </div>
@@ -180,18 +180,22 @@ const ColorBox = () => {
       {({ state }) => (
         <>
           <div
-            style={{
-              width: "64px",
-              height: "64px",
-              background: state.color,
-            }}
+            style={
+              {
+                width: "64px",
+                height: "64px",
+                background: state.color,
+              }
+            }
           />
           <div
-            style={{
-              width: "32px",
-              height: "32px",
-              background: state.subcolor,
-            }}
+            style={
+              {
+                width: "32px",
+                height: "32px",
+                background: state.subcolor,
+              }
+            }
           />
         </>
       )}
@@ -221,12 +225,14 @@ const SelectColors = () => {
         {colors.map((color) => (
           <div
             key={color}
-            style={{
-              background: color,
-              width: 24,
-              height: 24,
-              cursor: "pointer",
-            }}
+            style={
+              {
+                background: color,
+                width: 24,
+                height: 24,
+                cursor: "pointer",
+              }
+            }
           />
         ))}
       </div>
