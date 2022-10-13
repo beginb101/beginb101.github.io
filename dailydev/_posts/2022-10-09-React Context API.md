@@ -221,7 +221,7 @@ const SelectColors = () => {
   return (
     <div>
       <h2>색상을 선택하세요.</h2>
-      <div style={{ display: "flex" }}>
+      <div style={ {  display: "flex" } }>
         {colors.map((color) => (
           <div
             key={color}
@@ -264,21 +264,24 @@ const SelectColors = () => {
       <h2>색상을 선택하세요.</h2>
       <ColorConsumer>
         {({ actions }) => (
-          <div style={{ display: "flex" }}>
+          <div style={ { display: "flex" } }>
             {colors.map((color) => (
               <div
                 key={color}
-                style={{
-                  background: color,
-                  width: 24,
-                  height: 24,
-                  cursor: "pointer",
-                }}
+                style={
+                  {
+                    background: color,
+                    width: 24,
+                    height: 24,
+                    cursor: "pointer",
+                  }
+                }
                 onClick={() => actions.setColor(color)}
                 onContextMenu={(e) => {
-                  e.preventDefault(); // 오른쪽 버튼 클릭 시 메뉴가 뜨는 것을 무시
-                  actions.setSubColor(color);
-                }}
+                    e.preventDefault(); // 오른쪽 버튼 클릭 시 메뉴가 뜨는 것을 무시
+                    actions.setSubColor(color);
+                  }
+                }
               />
             ))}
           </div>
@@ -307,18 +310,22 @@ const ColorBox = () => {
     return (
             <>
                 <div
-                    style={{
-                    width: "64px",
-                    height: "64px",
-                    background: state.color,
-                    }}
+                    style={
+                      {
+                        width: "64px",
+                        height: "64px",
+                        background: state.color,
+                      }
+                    }
                 />
                 <div
-                    style={{
-                    width: "32px",
-                    height: "32px",
-                    background: state.subcolor,
-                    }}
+                    style={
+                      {
+                        width: "32px",
+                        height: "32px",
+                        background: state.subcolor,
+                      }
+                    }
                 />
             </>
     );
@@ -350,21 +357,24 @@ class SelectColors extends Component {
     return (
       <div>
         <h2>색상을 선택하세요.</h2>
-        <div style={{ display: "flex" }}>
+        <div style={ { display: "flex" } }>
           {colors.map((color) => (
             <div
               key={color}
-              style={{
-                background: color,
-                width: 24,
-                height: 24,
-                cursor: "pointer",
-              }}
+              style={
+                {
+                  background: color,
+                  width: 24,
+                  height: 24,
+                  cursor: "pointer",
+                }
+              }
               onClick={() => this.handleSetColor(color)}
               onContextMenu={(e) => {
-                e.preventDefault();
-                this.handleSetSubcolor(color);
-              }}
+                  e.preventDefault();
+                  this.handleSetSubcolor(color);
+                }
+              }
             />
           ))}
         </div>
